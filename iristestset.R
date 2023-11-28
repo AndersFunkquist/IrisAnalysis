@@ -66,5 +66,27 @@ library(factoextra)
 fviz_pca(pc)
 fviz_pca_var(pc)
 
+
+
+
+
+##some plot of my own
 #is sepal width related to sepal length visually?
 
+library(ggplot2)
+library(ggpubr)
+#a scatterplot template
+scatter <- ggplot() + geom_point(size=3, show.legend = FALSE) + 
+  geom_smooth(method=lm, se=FALSE, colour="black", size=0.5) + 
+  theme(text=element_text(size=20), panel.grid.major=element_blank(), 
+        panel.grid.minor = element_blank(), panel.background = element_blank(), 
+        axis.line = element_line(colour = "black")) + 
+  stat_cor(method = "spearman")
+#and a template for making the figure without background
+tema <- theme(text=element_text(size=20), panel.grid.major=element_blank(), 
+              panel.grid.minor = element_blank(), 
+              panel.background = element_blank(), 
+              axis.line = element_line(colour = "black"))
+
+#and then comparing the sepal width with length
+scatter + aes(iris$Sepal.Length,iris$Sepal.Width) + tema
