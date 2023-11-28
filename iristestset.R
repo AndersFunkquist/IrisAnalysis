@@ -65,3 +65,6 @@ library(factoextra)
 
 fviz_pca(pc)
 fviz_pca_var(pc)
+
+#is sepal width related to sepal length visually?
+
